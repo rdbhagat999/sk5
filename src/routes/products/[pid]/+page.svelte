@@ -1,9 +1,14 @@
 <script lang="ts">
+  import PageTitle from '$lib/components/PageTitle.svelte';
   import ProductComponent from '$lib/components/ProductComponent.svelte';
   import type { PageServerData } from './$types';
 
   const { data }: { data: PageServerData } = $props()
 </script>
+
+<PageTitle title={data.product?.title ? data?.product?.title : "Product Details"}/>
+
+<h1>Product Details</h1>
 
 <div>
   {#if data.product}

@@ -1,4 +1,5 @@
 <script lang="ts">
+  import PageTitle from "$lib/components/PageTitle.svelte";
 import "../app.css";
 import type { LayoutData } from "./$types";
 
@@ -6,11 +7,9 @@ const { data, children }: { data: LayoutData, children: any } = $props()
 
 </script>
 
-<nav>
-	<ul>
-		<li><strong><a href="/">My Svelte 5 App</a></strong></li>
-	</ul>
+<PageTitle title="Home"/>
 
+<nav>
 	<form action="/logout" method="POST">
         <ul class="flex justify-center items-center gap-4">
             <li><a href="/">Home</a></li>
@@ -27,6 +26,7 @@ const { data, children }: { data: LayoutData, children: any } = $props()
     </form>
 </nav>
 
-<!-- <slot /> -->
+<div class="max-w-xl mx-auto py-10">
+    {@render children()}
+</div>
 
-{@render children()}

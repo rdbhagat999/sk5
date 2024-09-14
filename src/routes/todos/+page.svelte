@@ -1,4 +1,5 @@
 <script lang="ts">
+  import PageTitle from '$lib/components/PageTitle.svelte';
   import TodoComponent from '$lib/components/TodoComponent.svelte';
   import type { TodoModel } from '$lib/model/todo.model';
   import type { PageData } from './$types';
@@ -59,6 +60,8 @@
     console.log("todos", todos)
   })
 </script>
+
+<PageTitle title="Todos"/>
 
 <div class="add-todo">
     <input id="add-todo" type="text" placeholder="add todo" onkeydown={addTodo} />
