@@ -14,7 +14,7 @@ export const handle = async ({ event, resolve }) => {
     event.locals.authToken = userToken;
   }
 
-  console.log("hooks localUser", event.locals.user);
+  console.log("hooks localUser", event.locals.user?.id);
 
   return resolve(event);
 };

@@ -8,14 +8,14 @@
 
 <PageTitle title={data.product?.title ? data?.product?.title : "Product Details"}/>
 
-<h1>Product Details</h1>
+<h1 class="text-2xl">Product Details</h1>
 
-<div>
+<div class="w-full mt-10">
   {#if data.product}
     <ProductComponent product={data.product} />
   {:else if data.status == 404}
-    <p>{data?.message}</p>
+    <p class="w-full p-2">{data?.message}</p>
   {:else}
-    <p>Product not found</p>
+    <p class="w-full p-2">Product not found</p>
   {/if}
 </div>

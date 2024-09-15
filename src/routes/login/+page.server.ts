@@ -17,6 +17,9 @@ export const actions = {
   login: async ({ cookies, request, locals, url }) => {
     const redirectTo = url.searchParams.get("redirectTo");
 
+    console.log("redirectTo", redirectTo);
+    // console.log("url", url);
+
     const data = await request.formData();
     const username = data.get("username");
     const password = data.get("password");
@@ -61,8 +64,9 @@ export const actions = {
 
         cookies.set(JWT_TOKEN_NAME, result.token, { path: "/" });
 
-        if (redirectTo) {
+        if (redirectTo?.length) {
           return redirect(302, `/${redirectTo?.slice(1)}`);
+          // return redirect(302, `/`);
         }
 
         return redirect(302, "/products");

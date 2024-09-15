@@ -8,10 +8,12 @@
 
 <PageTitle title="Account"/>
 
-<h1>Account Page</h1>
+<h1 class="text-2xl">Account Page</h1>
 
-{#if data.user}
+<div class=" mt-10">
+  {#if data.user}
     <h2>{data?.user?.id} {data?.user?.username}</h2>
-{:else}
-    <p>{data?.message}</p>
-{/if}
+  {:else}
+      <p>{data?.message}</p>
+  {/if}
+</div>

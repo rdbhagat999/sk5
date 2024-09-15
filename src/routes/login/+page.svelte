@@ -1,4 +1,5 @@
 <script lang="ts">
+  import { page } from "$app/stores";
   import PageTitle from "$lib/components/PageTitle.svelte";
   import { authStore } from "$lib/stores/authStore.svelte";
   import type { PageData } from "../$types";
@@ -7,22 +8,29 @@
 
     let form: PageData
 
+    let redirectTo = $state($page?.url?.searchParams.get("redirectTo"))
+
+    const redirectToUrl = () => redirectTo ? redirectTo : ""
+
     $effect(() => {
         inputElement.focus();
     });
 
     $effect(() => {
         console.log(authStore().authUser)
-        console.log(form)
+        // console.log(form)
+
+        redirectTo = $page?.url?.searchParams.get("redirectTo")
+        // console.log("redirectTo", redirectTo)
     });
     
 </script>
 
 <PageTitle title="Login"/>
 
-<h1>Login Page</h1>
+<h1 class="text-2xl">Login Page</h1>
 
-<form class="w-full" method="POST" action="?/login">
+<form class="w-full mt-10" method="POST" action={`?/login&redirectTo=${redirectToUrl()}`}>
   <div class="mb-5">
     <label for="username" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Your username</label>
     <input bind:this={inputElement} type="text" value="emilys" id="username" name="username" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="name@flowbite.com" required />
