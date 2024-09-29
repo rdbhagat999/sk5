@@ -3,7 +3,7 @@ import { authenticateUser } from "$lib/server/auth";
 
 export const handle = async ({ event, resolve }) => {
   console.log("hooks");
-  const { cookies } = event;
+  const { cookies, request } = event;
   const userToken = cookies.get(JWT_TOKEN_NAME);
 
   event.locals.user = null;

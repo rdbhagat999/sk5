@@ -9,6 +9,6 @@ export type UserModel = {
 };
 
 export interface LoginResponse extends UserModel {
-  token: string;
+  accessToken: string;
   refreshToken: string;
 }

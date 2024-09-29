@@ -1,7 +1,7 @@
 import { loginFn } from "$lib/api/authAPI";
 import { JWT_TOKEN_NAME } from "$lib/constants";
 import type { LoginResponse, UserModel } from "$lib/model/user.model";
-import { authStore } from "$lib/stores/authStore.svelte";
+// import { authStore } from "$lib/stores/authStore.svelte";
 import { fail, redirect } from "@sveltejs/kit";
 
 export function load({ locals }) {
@@ -47,22 +47,22 @@ export const actions = {
 
         // console.log(result);
 
-        const authUser: UserModel = {
-          email: result.email,
-          firstName: result.email,
-          gender: result.gender,
-          id: result.id,
-          image: result.image,
-          lastName: result.lastName,
-          username: result.username,
-        };
+        // const authUser: UserModel = {
+        //   email: result.email,
+        //   firstName: result.email,
+        //   gender: result.gender,
+        //   id: result.id,
+        //   image: result.image,
+        //   lastName: result.lastName,
+        //   username: result.username,
+        // };
 
         // const { updateAuthUser, updateAuthToken } = authStore();
 
         // updateAuthUser(authUser);
         // updateAuthToken(result.token);
 
-        cookies.set(JWT_TOKEN_NAME, result.token, { path: "/" });
+        cookies.set(JWT_TOKEN_NAME, result.accessToken, { path: "/" });
 
         if (redirectTo?.length) {
           return redirect(302, `/${redirectTo?.slice(1)}`);
